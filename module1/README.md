@@ -18,7 +18,7 @@ This repo is intentionally cut down to support these teaching goals:
   - context discovery
   - validation-first thinking
 
-This is **not** the full integrated teaching repo.  
+This is **not** the full integrated teaching repo.
 It keeps only the files needed for the Module 1 main case and simple UI demo.
 
 ## Included routes
@@ -61,6 +61,19 @@ Use `tests/test_profile_api.py` only as **supplementary context**, not as the fi
   - to support the idea that validation material is also context
 - `contracts.py`
   - to make nullable / missing semantics visible in the repo
+
+
+## Demo prompts
+
+Naive prompt:
+
+> The `/profile` endpoint is broken. Please find the problem and fix it.
+
+Better prompt:
+
+> The `/profile` endpoint in staging is returning 500 errors and KeyError: 'email' in logs.  User payload migration from old to new format is ongoing.  Some requests succeed, but email display is incorrect.
+>	Analyze the problem and potential causes before coding.
+
 
 ## Not included
 
