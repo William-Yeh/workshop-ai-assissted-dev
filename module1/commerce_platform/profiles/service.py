@@ -71,7 +71,6 @@ def build_profile_payload(user: dict[str, Any]) -> ProfilePayload:
         email = user["email"]
     else:
         email = user["contact"]["email"]
-
     return ProfilePayload(
         name=user["name"],
         email=email,

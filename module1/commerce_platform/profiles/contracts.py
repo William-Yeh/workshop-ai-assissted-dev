@@ -1,11 +1,8 @@
 from __future__ import annotations
 
-"""
-Teaching note:
-This file makes the current contract assumptions visible for Module 1.
+"""Teaching note: This file makes the current contract assumptions visible for Module 1.
 
-It is intentionally small.
-Its job is not to implement validation logic in full.
+It is intentionally small. Its job is not to implement validation logic in full.
 Its job is to make these distinctions explicit:
 
 - email field missing
@@ -32,7 +29,6 @@ class CheckoutContract:
 
 PROFILE_UI_CONTRACT = ProfileUiContract()
 CHECKOUT_CONTRACT = CheckoutContract()
-
 
 NULLABLE_AND_MISSING_SEMANTICS = {
     "missing_field": "The field is absent from the payload entirely.",

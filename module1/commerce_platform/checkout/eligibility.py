@@ -31,14 +31,12 @@ def evaluate_checkout_eligibility(user_id: int, user: dict[str, Any]) -> Checkou
             eligible=False,
             reason="missing email for active verified user",
         )
-
     if not email_required and not email:
         return CheckoutEligibility(
             user_id=user_id,
             eligible=True,
             reason="email can be completed later for invited or phone-only users",
         )
-
     return CheckoutEligibility(
         user_id=user_id,
         eligible=True,

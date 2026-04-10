@@ -3,17 +3,18 @@
 You are looking at a small product codebase for a membership and orders platform.
 
 ## What you are told
-The team reports that the **profile feature is broken**.
 
-What they mean by "broken" is not fully clear yet.
+The team reports that the **profile feature is broken**. What they mean by "broken" is not fully clear yet.
 
 You should not assume:
+
 - there is only one bug
 - the problem is only in the backend
 - every missing email is illegal
 - the first patch you can make is the right patch to merge
 
 ## Your task
+
 Before proposing a fix, first figure out:
 
 1. What symptoms actually exist
@@ -24,6 +25,7 @@ Before proposing a fix, first figure out:
 6. What would count as an acceptable fix
 
 ## Suggested starting points
+
 - run the app
 - inspect `/demo/profile-ui`
 - inspect `/profile/{user_id}`
@@ -32,8 +34,11 @@ Before proposing a fix, first figure out:
 - inspect the profile-related code path
 
 ## Important
+
 Do **not** jump directly to a patch.
+
 Start by producing:
+
 - known facts
 - missing information
 - likely causes

@@ -27,4 +27,11 @@ build-backend = "hatchling.build"
 packages = ["commerce_platform", "app"]
 
 [tool.hatch.build.targets.sdist]
-include = ["commerce_platform", "app", "tests", "materials", "CHALLENGE_PROFILE_PROMPT.md", "README.md", "pyproject.toml", ".python-version"]
+include = [
+  "commerce_platform",
+  "app",
+  "tests",
+  "materials",
+  "README.md",
+  "pyproject.toml",
+]

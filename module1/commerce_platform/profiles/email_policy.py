@@ -22,8 +22,8 @@ def is_verified(user: dict[str, Any]) -> bool:
 
 
 def is_email_missing_allowed(user: dict[str, Any]) -> bool:
-    """
-    A missing email is allowed for invited and phone-only onboarding users.
+    """A missing email is allowed for invited and phone-only onboarding users.
+
     It is not allowed for active verified users.
     """
     kind = account_kind(user)
@@ -38,8 +38,8 @@ def is_email_missing_allowed(user: dict[str, Any]) -> bool:
 
 
 def is_email_required_for_checkout(user: dict[str, Any]) -> bool:
-    """
-    Checkout is stricter than the profile UI.
+    """Checkout is stricter than the profile UI.
+
     Active verified users must have a real email.
     Invited users may proceed in a limited state and complete email later.
     """

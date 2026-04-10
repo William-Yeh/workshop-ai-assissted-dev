@@ -47,3 +47,21 @@ def test_checkout_rejects_active_verified_user_without_email() -> None:
         "eligible": False,
         "reason": "missing email for active verified user",
     }
+
+
+def test_checkout_allows_invited_user_to_complete_email_later() -> None:
+    response = client.get("/checkout-eligibility/4")
+    assert response.status_code == 200
+    assert response.json() == {
+        "user_id": 4,
+        "eligible": True,
+        "reason": "email can be completed later for invited or phone-only users",
+    }
+
+
+def test_demo_page_shows_checkout_panel() -> None:
+    response = client.get("/demo/profile-ui")
+    assert response.status_code == 200
+    text = response.text
+    assert "Checkout Eligibility" in text
+    assert "profile UI fallback and checkout eligibility are not the same contract" in text
