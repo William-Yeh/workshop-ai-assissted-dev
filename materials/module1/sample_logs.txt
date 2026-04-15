@@ -1,0 +1,12 @@
+[2026-04-08 10:14:22] INFO GET /profile/1 200
+[2026-04-08 10:14:23] INFO GET /profile/2 200
+[2026-04-08 10:14:24] ERROR GET /profile/3 500
+Traceback (most recent call last):
+  File "app/main.py", line 17, in get_profile
+    payload = build_profile_payload(user)
+  File "commerce_platform/profiles/service.py", line 52, in build_profile_payload
+    email = user["contact"]["email"]
+KeyError: 'email'
+[2026-04-08 10:14:25] INFO GET /profile/4 200
+[2026-04-08 10:14:26] INFO GET /profile/5 200
+[2026-04-08 10:14:27] INFO GET /checkout-eligibility/5 200 {"eligible": false, "reason": "missing email for active verified user"}

@@ -1,0 +1,50 @@
+# bad_patch_example.diff
+
+```diff
+diff --git a/commerce_platform/checkout/eligibility.py b/commerce_platform/checkout/eligibility.py
+index 1111111..2222222 100644
+--- a/commerce_platform/checkout/eligibility.py
++++ b/commerce_platform/checkout/eligibility.py
+@@
+-from commerce_platform.profiles.email_policy import is_email_required_for_checkout
++from commerce_platform.profiles.email_policy import lifecycle_status, is_verified
+
+@@
+-def extract_email_for_checkout(user: dict[str, Any]) -> str | None:
+-    # This consumer is strict about preserving the difference between
+-    # missing and null in the adapter layer. It does not coerce to "".
+-    if "email" in user:
+-        return user["email"]
+-    return user.get("contact", {}).get("email")
++def getEmail(user: dict[str, Any]) -> str:
++    # make the downstream consumer simpler by always returning a string
++    if "email" in user:
++        return user["email"] or ""
++    return user.get("contact", {}).get("email") or ""
+
+@@
+-def evaluate_checkout_eligibility(user_id: int, user: dict[str, Any]) -> CheckoutEligibility:
+-    email = extract_email_for_checkout(user)
+-    email_required = is_email_required_for_checkout(user)
++def evaluate_checkout_eligibility(user_id: int, user: dict[str, Any]) -> CheckoutEligibility:
++    email = getEmail(user)
++    userState = lifecycle_status(user)
++    verified = is_verified(user)
+
+-    if email_required and not email:
++    if userState == "active" and verified and not email:
+         return CheckoutEligibility(
+             user_id=user_id,
+             eligible=False,
+-            reason="missing email for active verified user",
++            reason="email missing",
+         )
+-    if not email_required and not email:
++    if not email:
+         return CheckoutEligibility(
+             user_id=user_id,
+             eligible=True,
+-            reason="email can be completed later for invited or phone-only users",
++            reason="email can be added later",
+         )
+```
