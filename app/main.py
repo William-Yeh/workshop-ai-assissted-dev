@@ -37,6 +37,122 @@ def get_checkout_eligibility(user_id: int) -> dict[str, str | int | bool]:
     }
 
 
+
+
+@app.get("/demo/module2", response_class=HTMLResponse)
+def module2_demo_index() -> str:
+    intro = (
+        "This page is a lightweight teaching index for Module 2. It does not replace the repo "
+        "workbench in VSCode or Cline. It helps the instructor move through the main case, the "
+        "two micro transfers, and the recommended git checkpoints without losing the room."
+    )
+    return f"""
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Module 2 Demo Index</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {{
+      color-scheme: light dark;
+      --bg: #f7f7fb;
+      --card: #ffffff;
+      --border: #d9dce3;
+      --muted: #5f6673;
+      --text: #1d2430;
+      --accent: #2446f5;
+      --soft: rgba(36,70,245,0.08);
+    }}
+    @media (prefers-color-scheme: dark) {{
+      :root {{
+        --bg: #0d1117;
+        --card: #161b22;
+        --border: #30363d;
+        --muted: #97a3b6;
+        --text: #e6edf3;
+        --accent: #7aa2ff;
+        --soft: rgba(122,162,255,0.12);
+      }}
+    }}
+    * {{ box-sizing: border-box; }}
+    body {{ margin: 0; padding: 24px; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }}
+    main {{ max-width: 1100px; margin: 0 auto; }}
+    h1, h2, h3 {{ margin: 0 0 12px; }}
+    p {{ margin: 0 0 12px; }}
+    .lead {{ color: var(--muted); max-width: 920px; }}
+    .grid {{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }}
+    @media (max-width: 960px) {{ .grid {{ grid-template-columns: 1fr; }} }}
+    .card {{ border: 1px solid var(--border); border-radius: 16px; padding: 18px; background: var(--card); }}
+    .pill {{ display: inline-block; margin-bottom: 10px; padding: 4px 10px; border-radius: 999px; background: var(--soft); color: var(--accent); font-size: 13px; font-weight: 600; }}
+    .subtle {{ color: var(--muted); font-size: 14px; }}
+    code {{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.95em; }}
+    ul {{ margin: 10px 0 0 18px; padding: 0; }}
+    li {{ margin: 6px 0; }}
+    .steps {{ margin-top: 24px; border: 1px solid var(--border); border-radius: 16px; padding: 18px; background: var(--card); }}
+    .callout {{ margin-top: 18px; border-left: 4px solid var(--accent); padding: 10px 14px; background: var(--soft); border-radius: 10px; }}
+    a {{ color: var(--accent); text-decoration: none; }}
+    a:hover {{ text-decoration: underline; }}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Module 2 Demo Index</h1>
+    <p class="lead">{html.escape(intro)}</p>
+
+    <div class="steps">
+      <h2>Suggested teaching sequence</h2>
+      <ol>
+        <li>Start from <code>m2-baseline</code> or <code>m2-main-case-start</code>.</li>
+        <li>Use the main case to separate <strong>symptom</strong>, <strong>candidate causes</strong>, and <strong>still-missing information</strong>.</li>
+        <li>Use micro transfer 1 to clarify <strong>consumer-specific expectation</strong> and whether a small guardrail test is worth adding.</li>
+        <li>Use micro transfer 2 to produce <strong>first-layer quality delivery</strong>: review notes, test sketch, style consistency review, or PR summary.</li>
+      </ol>
+      <div class="callout">This module is not a full debug workshop. It is about shrinking the problem, ordering validation, and delivering a first-layer quality version.</div>
+    </div>
+
+    <div class="grid">
+      <section class="card">
+        <div class="pill">Main case</div>
+        <h3>Profile migration incident</h3>
+        <p class="subtle">Goal: see the symptom first, then order validation.</p>
+        <ul>
+          <li>Use <a href="/demo/profile-ui">/demo/profile-ui</a></li>
+          <li>Compare user <code>3</code> and user <code>4</code></li>
+          <li>Do not patch yet; first separate facts from guesses</li>
+          <li>Suggested tag: <code>m2-main-case-start</code></li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <div class="pill">Micro transfer 1</div>
+        <h3>Checkout eligibility</h3>
+        <p class="subtle">Goal: the same missing email does not mean the same consumer rule.</p>
+        <ul>
+          <li>Compare <code>/checkout-eligibility/4</code> and <code>/checkout-eligibility/5</code></li>
+          <li>Ask whether the difference is a symptom issue or an expectation issue</li>
+          <li>Suggested tag: <code>m2-micro1-start</code></li>
+          <li>Suggested branch: <code>m2-test-gap-work</code></li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <div class="pill">Micro transfer 2</div>
+        <h3>Review / test reinforcement</h3>
+        <p class="subtle">Goal: turn analysis into first-layer quality delivery.</p>
+        <ul>
+          <li>Review style drift and first-layer quality notes</li>
+          <li>Use the repo materials under <code>materials/module2/</code></li>
+          <li>Suggested tags: <code>m2-micro2-start</code>, <code>m2-style-demo-bad</code>, <code>m2-style-demo-better</code></li>
+          <li>Suggested branches: <code>m2-style-bad-patch</code>, <code>m2-style-better-patch</code></li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
+"""
+
 @app.get("/demo/profile-ui", response_class=HTMLResponse)
 def profile_ui_demo() -> str:
     intro = (

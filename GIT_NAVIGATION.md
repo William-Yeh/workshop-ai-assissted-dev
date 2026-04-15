@@ -17,3 +17,8 @@
 - Tags are for stable teaching checkpoints.
 - Branches are for interactive work in VSCode / Cline.
 - The repo is still Module 2 work-in-progress, not final curriculum lock.
+
+
+## Browser entry
+- Open `/demo/module2` for the lightweight Module 2 instructor index.
+- Open `/demo/profile-ui` for the combined profile / checkout symptom demo.

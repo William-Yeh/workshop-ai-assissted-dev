@@ -103,3 +103,7 @@ This repo now also includes a `materials/module2/` folder for analysis-first tea
 
 ## Module 2 work in progress
 See `materials/module2/` and `tests/module2_sketches/`.
+
+
+## Module 2 demo index
+Open `/demo/module2` for a lightweight instructor index that ties together the main case, the two micro transfers, and the suggested git checkpoints.
