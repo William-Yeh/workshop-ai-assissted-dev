@@ -8,6 +8,9 @@
 - validation move 候選
 - first-layer review note
 - PR / issue summary 草稿
+- local convention inventory 草稿
+- SCOPE card 初稿
+- TRACE eval 的 unseen task / reviewer question 草稿
 
 ## 類別 B｜AI 可以先做草稿，但人一定要決定
 - validation order 最終採納
@@ -15,6 +18,8 @@
 - patch 是否真的合理
 - style consistency 是否可接受
 - test 是否已足夠
+- 哪條 local convention 值得保留
+- local convention 的 scope / out-of-scope
 - short-term fix 與 long-term fix 的取捨
 
 ## 類別 C｜不應直接外包給 AI
@@ -23,6 +28,7 @@
 - 高風險 migration 決策
 - team-wide rule enforcement 設計
 - 是否進入 workflow gate / automated rule / CI policy
+- 哪條 convention 正式升格成團隊規則
 
 ## 講師提醒
 這張表的目的，不是限制 AI。

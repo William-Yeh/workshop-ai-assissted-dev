@@ -1,112 +1,92 @@
-# Module 3｜Task Pack v1
+# Module 3｜Task Pack v3
 
 ## 使用方式
-本任務包的目的，是讓學員把「自己會用的 AI 協作做法」，整理成別人也能接手的模板資產。
+本任務包的目的，是讓學員把「自己會用的 AI 協作做法」，整理成別人也能接手、也能驗證的團隊資產。
 
-這不是治理課。
-也不是自動化導入課。
-請守住停損線：**先把有效做法留得下來，再談流程與規則。**
-
----
+這不只是模板課。
+它同時是：
+- 抽出可遷移原則
+- 保留 local convention
+- 用 evals 檢查這份 convention 是否真的有效
+- 最後示範如何跟 AI 協作完成這件事
 
 ## 先讀
 1. `materials/module3/case_brief.md`
-2. `materials/module3/template_pack_checklist.md`
-3. `materials/module3/shared_task_brief_template.md`
-4. `materials/module3/validation_handoff_template.md`
-5. `materials/module3/style_consistency_team_template.md`
-6. `materials/module3/ai_outsource_judgment_table.md`
+2. `materials/module3/local_convention_inventory_template.md`
+3. `materials/module3/local_convention_card_template.md`
+4. `materials/module3/local_convention_trace_eval.md`
+5. `materials/module3/local_convention_eval_stack.md`
+6. `materials/module3/ai_assisted_convention_extraction_demo.md`
+7. `materials/module3/template_pack_checklist.md`
 
----
-
-## 任務 A｜挑一個值得模板化的做法
+## 任務 A｜觀察 repeated patterns
 ### 目標
-不要把所有 prompt 都模板化。先挑一個真的常用、常交接、常出錯的做法。
+先不要急著寫 prompt。先找 repo / 文件集裡反覆出現的 pattern。
 
 ### 建議來源
-- Module 1 的 task brief 外層骨架
-- Module 2 的 validation order 寫法
-- Module 2 的 style consistency 自查口徑
-- Module 2 的 first-layer quality delivery 寫法
-
-### 判斷標準
-優先挑有以下特徵的做法：
-1. 重複出現
-2. 容易漏欄位
-3. 接手時容易失真
-4. AI 很容易做太多或做太少
+- 鄰近 code
+- 鄰近測試
+- summary / review note / handoff note
+- 既有命名、結構、術語、驗證順序
 
 ### 預期產出
-- 一句話說明：你打算模板化哪個做法，為什麼
+- 一份 local convention inventory 草稿
 
----
-
-## 任務 B｜把一次性 prompt 改成共用模板
+## 任務 B｜寫出 1 張 SCOPE card
 ### 目標
-把「我這次這樣問 AI」改成「團隊之後都能照這個格式用」。
+把一條 candidate local convention 寫成可以交接、可檢查的格式。
 
-### 至少要補上的欄位
-- 這個模板用來解什麼問題
-- 何時用 / 何時不要用
-- 必要輸入
-- 最小足夠 context
-- 希望 AI 怎麼輸出
-- 人類最後要怎麼驗
-- 哪些事情不能直接外包給 AI
+### 最少欄位
+- Signal
+- Context
+- Out-of-scope
+- Proof
+- Enforcement path
 
 ### 預期產出
-- 一份共用模板草稿
+- 一張 local convention card
 
----
-
-## 任務 C｜補上 handoff 與驗證點
+## 任務 C｜做 1 次 TRACE eval
 ### 目標
-避免模板只有 prompt 文字，卻沒有交接點。
+不是只看文件寫得漂亮，而是要檢查這條 convention 是否真的有效。
 
-### 建議操作
-請至少回答這四題：
-1. 下一個接手的人要先看什麼？
-2. 哪些輸入沒給齊時，不要硬做？
-3. 這份輸出最少要怎麼驗？
-4. 什麼情況下應該停下來，改找人判斷？
+### 最少要回答
+1. 換一個相近任務還能用嗎？
+2. evidence 是否足夠？
+3. reviewer 能看出違反嗎？
+4. 加上這條 convention 後，輸出有沒有更貼近 repo / 文件集？
 
 ### 預期產出
-- 一份 handoff / validation 補充欄位
+- 一份 TRACE eval 草稿
 
----
-
-## 任務 D｜補一張 AI 可做 / 不可外包判斷表
+## 任務 D｜human-first，AI-assisted
 ### 目標
-讓模板不只會叫 AI 做事，也能界定不該外包的部分。
-
-### 最少要分三類
-1. AI 可以先做
-2. AI 可以先做草稿，但人一定要決定
-3. 不應直接外包給 AI
+先用人類方法做一輪，再請 AI 協助補 evidence、產生反例、模擬 reviewer、設計 unseen task。
 
 ### 預期產出
-- 一份簡版判斷表
+- 一段 AI-assisted 補強記錄
+- 一句話說明：AI 幫了什麼，人最後仍要決定什麼
 
----
+## Stretch goal｜再把它整理成 template pack
+若時間足夠，再從 local convention card 往下整理成：
+- shared task brief template
+- validation / diagnosis handoff template
+- style consistency review template
 
-## 任務 E｜做模板 reviewer 檢查
-### 目標
-判斷這份模板是否真的能交接，而不是只對原作者自己有用。
+## 建議時數
+- **核心版：55～60 分鐘**
+  - inventory
+  - 1 張 SCOPE card
+  - 1 次 TRACE eval
+- **完整但仍可控：60～70 分鐘**
+  - 核心版全部
+  - 再加 1 段 AI-assisted 示範
+  - 再加 1 次 reviewer / violation-detection 檢查
 
-### 檢查問題
-- 不認識原作者的人看得懂嗎？
-- 換一個相近案例，還能用嗎？
-- 這份模板有沒有把 local convention 與驗證點留住？
-- 這份模板會不會讓 AI 太早做超過邊界的事？
+## 停損線
+若時間開始往 70 分鐘靠近，請優先保留：
+- 1 份 inventory
+- 1 張 SCOPE card
+- 1 次 TRACE eval
 
-### 預期產出
-- 一份模板 reviewer note
-
----
-
-## 結尾提醒
-你現在不是要建立完整團隊治理。
-你現在是在練：
-- 把有效做法說清楚
-- 把必要欄位固定下來
-- 把交接點與邊界留下來
+不要同時要求三種 template pack 全做完。

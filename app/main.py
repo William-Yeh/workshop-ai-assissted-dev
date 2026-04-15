@@ -196,8 +196,8 @@ def module2_demo_index() -> str:
 def module3_demo_index() -> str:
     intro = (
         "This page is a lightweight teaching index for Module 3. It helps the instructor "
-        "turn proven individual AI usage into shared templates, checklists, and handoff-ready "
-        "assets without jumping too early into team-level workflow governance."
+        "extract transferable collaboration structure, retain local convention, and validate "
+        "whether those conventions actually improve outputs before jumping into workflow governance."
     )
     return f"""
 <!doctype html>
@@ -233,7 +233,7 @@ def module3_demo_index() -> str:
     main {{ max-width: 1100px; margin: 0 auto; }}
     h1, h2, h3 {{ margin: 0 0 12px; }}
     p {{ margin: 0 0 12px; }}
-    .lead {{ color: var(--muted); max-width: 920px; }}
+    .lead {{ color: var(--muted); max-width: 940px; }}
     .grid {{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }}
     @media (max-width: 960px) {{ .grid {{ grid-template-columns: 1fr; }} }}
     .card {{ border: 1px solid var(--border); border-radius: 16px; padding: 18px; background: var(--card); }}
@@ -256,52 +256,67 @@ def module3_demo_index() -> str:
     <div class="steps">
       <h2>Suggested teaching sequence</h2>
       <ol>
-        <li>Start from the proven outputs of <a href="/demo/module1">/demo/module1</a> and <a href="/demo/module2">/demo/module2</a>.</li>
-        <li>Pick one repeated pattern worth keeping: task brief, validation handoff, or style consistency review.</li>
-        <li>Turn that pattern into a template pack with <strong>usage conditions</strong>, <strong>required inputs</strong>, <strong>output structure</strong>, and <strong>validation / handoff points</strong>.</li>
-        <li>Add an <strong>AI can do / cannot outsource</strong> boundary so the pack is safe to share.</li>
+        <li>Start from a previously proven output in <a href="/demo/module1">/demo/module1</a> or <a href="/demo/module2">/demo/module2</a>.</li>
+        <li>Extract one candidate local convention into a <strong>SCOPE</strong> card.</li>
+        <li>Run one <strong>TRACE</strong> check instead of polishing three template packs.</li>
+        <li>Only then show a short <strong>human-first, AI-assisted</strong> demo to add evidence, counterexamples, or reviewer questions.</li>
       </ol>
-      <div class="callout">This module is not yet about workflow gates or automated rules. It is about turning one-off wins into a template pack the team can actually reuse.</div>
+      <div class="callout">To keep this module controlled, require one main artifact and one TRACE eval. Around 55–60 minutes is the lean version; 60–70 minutes is still reasonable if you add one short AI-assisted and reviewer check.</div>
     </div>
 
     <div class="grid">
       <section class="card">
-        <div class="pill">Pack 1</div>
-        <h3>Shared task brief template</h3>
-        <p class="subtle">Goal: convert personal prompt craft into a reusable team format.</p>
+        <div class="pill">Extract</div>
+        <h3>Local convention inventory</h3>
+        <p class="subtle">Start from repeated patterns, not from pretty prompt wording.</p>
         <ul>
-          <li>Use <code>materials/module3/shared_task_brief_template.md</code></li>
-          <li>Lock in purpose, when to use, minimum useful context, and final line</li>
-          <li>Best bridge from Module 1</li>
+          <li>Observe naming, structure, testing, terminology, and handoff conventions</li>
+          <li>Separate must-follow from strong preference and local habit</li>
+          <li>Suggested file: <code>materials/module3/local_convention_inventory_template.md</code></li>
         </ul>
       </section>
 
       <section class="card">
-        <div class="pill">Pack 2</div>
-        <h3>Validation / handoff template</h3>
-        <p class="subtle">Goal: preserve diagnosis quality when work changes hands.</p>
+        <div class="pill">Structure</div>
+        <h3>SCOPE card</h3>
+        <p class="subtle">Keep one convention with signal, boundary, proof, and enforcement path.</p>
         <ul>
-          <li>Use <code>materials/module3/validation_handoff_template.md</code></li>
-          <li>Keep symptom, candidate causes, missing info, and validation order separated</li>
-          <li>Best bridge from Module 2</li>
+          <li><strong>S</strong>ignal</li>
+          <li><strong>C</strong>ontext</li>
+          <li><strong>O</strong>ut-of-scope</li>
+          <li><strong>P</strong>roof</li>
+          <li><strong>E</strong>nforcement path</li>
         </ul>
       </section>
 
       <section class="card">
-        <div class="pill">Pack 3</div>
-        <h3>Style review + boundary table</h3>
-        <p class="subtle">Goal: make style consistency and responsibility boundaries shareable.</p>
+        <div class="pill">Validate</div>
+        <h3>TRACE eval</h3>
+        <p class="subtle">A convention is not done when it reads well. It is done when it changes output quality.</p>
         <ul>
-          <li>Use <code>materials/module3/style_consistency_team_template.md</code></li>
-          <li>Pair with <code>materials/module3/ai_outsource_judgment_table.md</code></li>
-          <li>Do not turn this into policy enforcement yet</li>
+          <li><strong>T</strong>ransferable</li>
+          <li><strong>R</strong>epeat-backed</li>
+          <li><strong>A</strong>ctionable</li>
+          <li><strong>C</strong>ontext-bounded</li>
+          <li><strong>E</strong>ffective</li>
         </ul>
       </section>
+    </div>
+
+    <div class="steps">
+      <h2>What AI can help with here</h2>
+      <ul>
+        <li>Expand evidence from nearby files and documents</li>
+        <li>Generate counterexamples and reviewer questions</li>
+        <li>Propose an unseen task for a quick A/B comparison</li>
+      </ul>
+      <div class="callout">AI can do / cannot outsource still applies here. AI can accelerate extraction and validation, but humans still decide adoption, scope, and rule escalation.</div>
     </div>
   </main>
 </body>
 </html>
 """
+
 
 @app.get("/demo/profile-ui", response_class=HTMLResponse)
 def profile_ui_demo() -> str:

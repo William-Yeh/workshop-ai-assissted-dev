@@ -8,7 +8,14 @@
 - 功能看起來可跑，但你懷疑它讓 codebase 更不一致
 - 需要讓 reviewer 與作者使用同一套檢查語言
 
-## 檢查面向
+## 先做 local convention extraction
+不要一開始就只寫「請符合團隊風格」。
+先找出：
+- 這個 repo 重複出現了哪些命名、結構、術語、測試、交付慣例
+- 哪些值得升格成 reviewer 問句
+- 哪些只是局部案例，不要硬寫成規則
+
+## reviewer 檢查面向
 ### A. 命名一致性
 - 命名是否貼近現有 repo？
 - 有沒有突然發明第二套名詞？
@@ -31,7 +38,10 @@
 3. 偏移風險是什麼
 4. 建議先修哪一點
 
-## 邊界提醒
-- 這不是審美評論
-- 這不是叫 reviewer 重寫全部 patch
-- 這是在保護 codebase 不被局部成功、整體失衡的 AI patch 慢慢帶偏
+## TRACE 提醒
+一條 style rule 若要升格成共用 reviewer language，至少要通過 TRACE：
+- 能跨相近任務使用
+- 有 evidence
+- reviewer 能操作
+- 邊界清楚
+- 套上後真的有效

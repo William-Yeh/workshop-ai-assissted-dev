@@ -10,6 +10,7 @@ def test_module3_demo_index_renders() -> None:
     assert response.status_code == 200
     text = response.text
     assert "Module 3 Demo Index" in text
-    assert "template pack" in text.lower()
-    assert "AI can do / cannot outsource" in text
+    assert "SCOPE" in text
+    assert "TRACE" in text
+    assert "human-first, AI-assisted" in text
     assert "/demo/module2" in text

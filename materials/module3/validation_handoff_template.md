@@ -29,12 +29,17 @@
 - 目前先交哪一種品質產物？
 - analysis note / focused review / minimal test sketch / PR summary？
 
+## local convention 提醒
+分析任務也有 local convention，例如：
+- incident summary 的順序
+- hypothesis 的寫法
+- evidence 包的命名或結構
+- 先驗哪一層的團隊慣例
+
+先把這些寫進 SCOPE card，再整理進 handoff。
+
 ## 最低驗證
 - symptom 與 cause 沒有混在一起
 - validation order 有先後理由
+- local convention 有被保留
 - 沒有太早跳進完整修復
-
-## handoff 提醒
-- 下一位接手者先從哪份 evidence 開始看
-- 哪些假設還沒被驗
-- 哪些 patch suggestion 暫時不能直接採納
