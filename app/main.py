@@ -8,7 +8,7 @@ from fastapi.responses import HTMLResponse
 from commerce_platform.checkout.eligibility import evaluate_checkout_eligibility
 from commerce_platform.profiles.service import build_profile_payload, get_user_record
 
-app = FastAPI(title="Module 1 Integrated Teaching Repo")
+app = FastAPI(title="AI Collaboration Course Repo")
 
 
 @app.get("/health")
@@ -38,6 +38,44 @@ def get_checkout_eligibility(user_id: int) -> dict[str, str | int | bool]:
 
 
 
+
+@app.get("/demo/module1", response_class=HTMLResponse)
+def module1_demo_index() -> str:
+    intro = (
+        "This page is a lightweight teaching index for Module 1. "
+        "Use it to start from task definition, context, and output framing before moving to Module 2."
+    )
+    return f"""
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Module 1 Demo Index</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {{ font-family: system-ui, sans-serif; margin: 0; padding: 24px; background: #f7f7fb; color: #1d2430; line-height: 1.5; }}
+    main {{ max-width: 960px; margin: 0 auto; }}
+    .card {{ border: 1px solid #d9dce3; background: white; border-radius: 16px; padding: 18px; margin-top: 16px; }}
+    code {{ font-family: ui-monospace, monospace; }}
+    a {{ color: #2446f5; text-decoration: none; }}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Module 1 Demo Index</h1>
+    <p>{html.escape(intro)}</p>
+    <div class="card">
+      <h2>Suggested entry</h2>
+      <ol>
+        <li>Open <a href="/demo/profile-ui">/demo/profile-ui</a></li>
+        <li>Compare user <code>3</code>, user <code>4</code>, and checkout user <code>5</code></li>
+        <li>Use Module 1 materials to practice task brief, minimum useful context, and output framing</li>
+      </ol>
+    </div>
+  </main>
+</body>
+</html>
+"""
 
 @app.get("/demo/module2", response_class=HTMLResponse)
 def module2_demo_index() -> str:

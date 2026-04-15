@@ -65,7 +65,7 @@
 
 ### 建議操作
 - 看 `materials/module2/test_gap_note.md`
-- 看 `tests/module2_sketches/`
+- 看 `tests/module2/sketches/`
 - 用這三個判準判斷：
   1. 這個 test 能不能區分候選原因？
   2. 這個 test 能不能固定關鍵預期行為？

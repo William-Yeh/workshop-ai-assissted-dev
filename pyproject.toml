@@ -1,7 +1,7 @@
 [project]
-name = "module1-integrated-teaching-repo"
+name = "ai-collab-course-repo"
 version = "0.1.0"
-description = "A small integrated teaching repo for Module 1 AI-assisted development workshop"
+description = "Unified teaching repo for Module 1 and Module 2 of the AI collaboration development workshop"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
