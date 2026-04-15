@@ -191,6 +191,118 @@ def module2_demo_index() -> str:
 </html>
 """
 
+
+@app.get("/demo/module3", response_class=HTMLResponse)
+def module3_demo_index() -> str:
+    intro = (
+        "This page is a lightweight teaching index for Module 3. It helps the instructor "
+        "turn proven individual AI usage into shared templates, checklists, and handoff-ready "
+        "assets without jumping too early into team-level workflow governance."
+    )
+    return f"""
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Module 3 Demo Index</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {{
+      color-scheme: light dark;
+      --bg: #f7f7fb;
+      --card: #ffffff;
+      --border: #d9dce3;
+      --muted: #5f6673;
+      --text: #1d2430;
+      --accent: #2446f5;
+      --soft: rgba(36,70,245,0.08);
+    }}
+    @media (prefers-color-scheme: dark) {{
+      :root {{
+        --bg: #0d1117;
+        --card: #161b22;
+        --border: #30363d;
+        --muted: #97a3b6;
+        --text: #e6edf3;
+        --accent: #7aa2ff;
+        --soft: rgba(122,162,255,0.12);
+      }}
+    }}
+    * {{ box-sizing: border-box; }}
+    body {{ margin: 0; padding: 24px; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }}
+    main {{ max-width: 1100px; margin: 0 auto; }}
+    h1, h2, h3 {{ margin: 0 0 12px; }}
+    p {{ margin: 0 0 12px; }}
+    .lead {{ color: var(--muted); max-width: 920px; }}
+    .grid {{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }}
+    @media (max-width: 960px) {{ .grid {{ grid-template-columns: 1fr; }} }}
+    .card {{ border: 1px solid var(--border); border-radius: 16px; padding: 18px; background: var(--card); }}
+    .pill {{ display: inline-block; margin-bottom: 10px; padding: 4px 10px; border-radius: 999px; background: var(--soft); color: var(--accent); font-size: 13px; font-weight: 600; }}
+    .subtle {{ color: var(--muted); font-size: 14px; }}
+    code {{ font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.95em; }}
+    ul {{ margin: 10px 0 0 18px; padding: 0; }}
+    li {{ margin: 6px 0; }}
+    .steps {{ margin-top: 24px; border: 1px solid var(--border); border-radius: 16px; padding: 18px; background: var(--card); }}
+    .callout {{ margin-top: 18px; border-left: 4px solid var(--accent); padding: 10px 14px; background: var(--soft); border-radius: 10px; }}
+    a {{ color: var(--accent); text-decoration: none; }}
+    a:hover {{ text-decoration: underline; }}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Module 3 Demo Index</h1>
+    <p class="lead">{html.escape(intro)}</p>
+
+    <div class="steps">
+      <h2>Suggested teaching sequence</h2>
+      <ol>
+        <li>Start from the proven outputs of <a href="/demo/module1">/demo/module1</a> and <a href="/demo/module2">/demo/module2</a>.</li>
+        <li>Pick one repeated pattern worth keeping: task brief, validation handoff, or style consistency review.</li>
+        <li>Turn that pattern into a template pack with <strong>usage conditions</strong>, <strong>required inputs</strong>, <strong>output structure</strong>, and <strong>validation / handoff points</strong>.</li>
+        <li>Add an <strong>AI can do / cannot outsource</strong> boundary so the pack is safe to share.</li>
+      </ol>
+      <div class="callout">This module is not yet about workflow gates or automated rules. It is about turning one-off wins into a template pack the team can actually reuse.</div>
+    </div>
+
+    <div class="grid">
+      <section class="card">
+        <div class="pill">Pack 1</div>
+        <h3>Shared task brief template</h3>
+        <p class="subtle">Goal: convert personal prompt craft into a reusable team format.</p>
+        <ul>
+          <li>Use <code>materials/module3/shared_task_brief_template.md</code></li>
+          <li>Lock in purpose, when to use, minimum useful context, and final line</li>
+          <li>Best bridge from Module 1</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <div class="pill">Pack 2</div>
+        <h3>Validation / handoff template</h3>
+        <p class="subtle">Goal: preserve diagnosis quality when work changes hands.</p>
+        <ul>
+          <li>Use <code>materials/module3/validation_handoff_template.md</code></li>
+          <li>Keep symptom, candidate causes, missing info, and validation order separated</li>
+          <li>Best bridge from Module 2</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <div class="pill">Pack 3</div>
+        <h3>Style review + boundary table</h3>
+        <p class="subtle">Goal: make style consistency and responsibility boundaries shareable.</p>
+        <ul>
+          <li>Use <code>materials/module3/style_consistency_team_template.md</code></li>
+          <li>Pair with <code>materials/module3/ai_outsource_judgment_table.md</code></li>
+          <li>Do not turn this into policy enforcement yet</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
+"""
+
 @app.get("/demo/profile-ui", response_class=HTMLResponse)
 def profile_ui_demo() -> str:
     intro = (
@@ -285,6 +397,11 @@ def profile_ui_demo() -> str:
     }}
     button:hover {{
       border-color: var(--accent);
+    }}
+    button.active {{
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
     }}
     .grid {{
       display: grid;
@@ -439,6 +556,9 @@ def profile_ui_demo() -> str:
     }}
 
     async function loadUser(userId) {{
+      document.querySelectorAll(".users button").forEach(b => b.classList.remove("active"));
+      document.querySelector(`.users button[onclick="loadUser(${{userId}})"]`).classList.add("active");
+
       const profileStatus = document.getElementById("profile-status");
       const profileResult = document.getElementById("profile-result");
       const uiStatus = document.getElementById("ui-status");
